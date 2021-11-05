@@ -38,6 +38,8 @@ export class Router {
      * router instance using the 'this' keyword. Substitute 'home' for the variable
      * page
      */
+     this['page'] = pageFunc;
+
   }
 
   /**
