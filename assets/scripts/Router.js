@@ -67,6 +67,29 @@ export class Router {
      *     and URL + hash to history
      *  4. Finally, call the stored function for the given page
      */
+    
+    // Check function exist
+    if (this[page] === undefined) {
+      console.log(`${page} does not exist`);
+      return;
+    } 
+    // Variable Hash
+    let hash = ''; 
+    if (page !== 'home') {
+      hash = `#${page}`;
+    }
 
+    // pushState
+    console.log(page);
+    if(!statePopped && window.location.hash !== hash) {
+      let url = window.location.origin + hash;
+      let state = {page: url};
+      console.log(state.key);
+      history.pushState(state, '', url);
+    }
+    
+    // call the stored function
+    console.log(page);
+    this[page]();
   }
 }
