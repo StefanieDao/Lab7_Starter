@@ -125,6 +125,11 @@ function createRecipeCards() {
     }
     bindRecipeCard(recipeCard, page);
     document.querySelector('.recipe-cards--wrapper').appendChild(recipeCard);
+
+    router.addPage('home', function() {
+      document.querySelector('.section--recipe-cards').classList.add('shown');
+      document.querySelector('.section--recipe-expand').classList.remove('shown');
+    });
   }
 
 
@@ -183,6 +188,12 @@ function bindEscKey() {
    * if the escape key is pressed, use your router to navigate() to the 'home'
    * page. This will let us go back to the home page from the detailed page.
    */
+
+  document.addEventListener('keydown', k => {
+    if (k.key === "Escape") {
+      router.navigate('home', false);
+    }
+  });
 }
 
 /**
@@ -204,4 +215,15 @@ function bindPopstate() {
    * so your navigate() function does not add your going back action to the history,
    * creating an infinite loop
    */
+   window.addEventListener('popstate', (event) => {
+     console.log()
+     console.log((event.state));
+     if (event.state === null) {
+      router.navigate('home', true);
+     }
+     else {
+       router.navigate(event.state, true);
+     }     
+  });
+  
 }
