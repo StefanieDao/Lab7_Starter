@@ -133,7 +133,7 @@ class RecipeCard extends HTMLElement {
     if (ratingVal) {
       rating.innerHTML = `
         <span>${ratingVal}</span>
-        <img src="/assets/images/icons/${numStars}-star.svg" alt="${numStars} stars">
+        <img src="assets/images/icons/${numStars}-star.svg" alt="${numStars} stars">
       `;
       if (ratingTotal) {
         rating.innerHTML += `<span>(${ratingTotal})</span>`;
