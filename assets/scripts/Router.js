@@ -80,16 +80,13 @@ export class Router {
     }
 
     // pushState
-    console.log(page);
     if(!statePopped && window.location.hash !== hash) {
       let url = window.location.origin + hash;
-      let state = {page: url};
-      console.log(state.key);
+      let state = page;
       history.pushState(state, '', url);
     }
     
     // call the stored function
-    console.log(page);
     this[page]();
   }
 }
